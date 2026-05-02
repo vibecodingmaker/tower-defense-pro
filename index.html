@@ -6,36 +6,41 @@
   <title>Tower Defense Pro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-0: #071018;
-      --bg-1: #0d1a23;
-      --panel: rgba(14, 22, 31, 0.72);
-      --panel-strong: rgba(19, 28, 39, 0.9);
-      --line: rgba(255, 214, 128, 0.18);
-      --gold: #f0c46b;
-      --gold-deep: #b88428;
-      --text: #f5f1e6;
-      --muted: #9fafbd;
-      --good: #80d68e;
-      --bad: #ff6d6d;
-      --accent: #7dc7ff;
-      --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      --bg-0: #faf8f5;
+      --bg-1: #f1e8dc;
+      --panel: rgba(255, 252, 247, 0.82);
+      --panel-strong: rgba(255, 249, 241, 0.96);
+      --line: rgba(212, 165, 116, 0.24);
+      --gold: #d4a574;
+      --gold-deep: #a87434;
+      --text: #2f2418;
+      --muted: #7a6a59;
+      --good: #5f8f61;
+      --bad: #b85a4e;
+      --accent: #b89a70;
+      --shadow: 0 22px 48px rgba(66, 47, 28, 0.14);
     }
 
     * { box-sizing: border-box; }
+    *:focus-visible {
+      outline: 2px solid rgba(212, 165, 116, 0.65);
+      outline-offset: 2px;
+    }
     html, body {
       width: 100%;
       height: 100%;
       margin: 0;
       overflow: hidden;
       background:
-        radial-gradient(circle at 20% 10%, rgba(126, 89, 40, 0.20), transparent 28%),
-        radial-gradient(circle at 80% 18%, rgba(57, 92, 112, 0.24), transparent 30%),
-        linear-gradient(180deg, #060c12 0%, #0a131b 50%, #05090d 100%);
+        radial-gradient(circle at 16% 12%, rgba(212, 165, 116, 0.18), transparent 28%),
+        radial-gradient(circle at 82% 18%, rgba(179, 150, 118, 0.16), transparent 30%),
+        linear-gradient(180deg, #fbf8f4 0%, #f2e8da 52%, #ece0d2 100%);
       font-family: 'Nunito', system-ui, sans-serif;
       color: var(--text);
+      color-scheme: light;
     }
 
     body {
@@ -54,7 +59,8 @@
 
     #topBar, #towerBar, #gameWrap {
       border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(32, 41, 53, 0.58), rgba(12, 18, 26, 0.76));
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(247, 239, 228, 0.94));
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       box-shadow: var(--shadow);
@@ -63,7 +69,7 @@
     #topBar {
       flex: 0 0 15%;
       min-height: 92px;
-      border-radius: 24px;
+      border-radius: 30px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -77,8 +83,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 15% 35%, rgba(240, 196, 107, 0.10), transparent 34%),
-        radial-gradient(circle at 80% 0%, rgba(125, 199, 255, 0.10), transparent 36%);
+        radial-gradient(circle at 12% 35%, rgba(212, 165, 116, 0.14), transparent 32%),
+        radial-gradient(circle at 82% 0%, rgba(255, 255, 255, 0.9), transparent 36%);
       pointer-events: none;
     }
 
@@ -93,15 +99,17 @@
       font-size: clamp(20px, 3.4vw, 34px);
       line-height: 1;
       letter-spacing: 0.03em;
-      color: #fff6dc;
-      text-shadow: 0 0 16px rgba(240, 196, 107, 0.2);
+      color: #3a2a1d;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 700;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
     }
 
     .titleBlock p {
       margin: 7px 0 0;
       color: var(--muted);
       font-size: clamp(11px, 1.8vw, 14px);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
@@ -115,11 +123,11 @@
 
     .stat {
       min-width: 72px;
-      padding: 10px 14px;
-      border-radius: 18px;
-      background: rgba(4, 10, 15, 0.42);
-      border: 1px solid rgba(255, 214, 128, 0.14);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      padding: 11px 14px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(247, 239, 228, 0.88));
+      border: 1px solid rgba(212, 165, 116, 0.22);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 10px 18px rgba(93, 67, 44, 0.08);
       text-align: center;
     }
 
@@ -128,7 +136,7 @@
       margin-top: 3px;
       font-size: clamp(17px, 3.2vw, 28px);
       font-weight: 900;
-      color: #fff1c2;
+      color: #3c2c1a;
     }
 
     .stat small {
@@ -141,9 +149,11 @@
     #gameWrap {
       flex: 1 1 65%;
       min-height: 0;
-      border-radius: 28px;
+      border-radius: 32px;
       position: relative;
       overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255, 253, 250, 0.96), rgba(245, 236, 224, 0.98));
     }
 
     #gameCanvas {
@@ -151,12 +161,13 @@
       height: 100%;
       display: block;
       touch-action: none;
+      background: linear-gradient(180deg, #fcf9f5, #f1e6d8);
     }
 
     #towerBar {
       flex: 0 0 20%;
       min-height: 132px;
-      border-radius: 24px;
+      border-radius: 30px;
       padding: 10px;
       display: grid;
       grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -167,10 +178,10 @@
 
     .towerBtn {
       appearance: none;
-      border: 1px solid rgba(255, 214, 128, 0.16);
-      border-radius: 18px;
+      border: 1px solid rgba(212, 165, 116, 0.22);
+      border-radius: 22px;
       background:
-        linear-gradient(180deg, rgba(25, 32, 43, 0.92), rgba(9, 13, 19, 0.95));
+        linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(246, 238, 228, 0.98));
       color: var(--text);
       display: flex;
       flex-direction: column;
@@ -180,8 +191,15 @@
       padding: 10px 6px;
       min-width: 0;
       font: inherit;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-      transition: transform 140ms ease, border-color 140ms ease, box-shadow 140ms ease, filter 140ms ease;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.92),
+        0 10px 18px rgba(94, 69, 44, 0.08);
+      transition: transform 140ms ease, border-color 140ms ease, box-shadow 140ms ease, filter 140ms ease, background 140ms ease;
+    }
+
+    .towerBtn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.02);
     }
 
     .towerBtn:active {
@@ -189,9 +207,13 @@
     }
 
     .towerBtn.active {
-      border-color: rgba(240, 196, 107, 0.7);
-      box-shadow: 0 0 0 1px rgba(240, 196, 107, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.04);
-      filter: brightness(1.08);
+      border-color: rgba(212, 165, 116, 0.72);
+      box-shadow:
+        0 0 0 1px rgba(212, 165, 116, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.92),
+        0 16px 28px rgba(164, 120, 69, 0.14);
+      background: linear-gradient(180deg, rgba(255, 251, 244, 0.98), rgba(245, 230, 212, 0.98));
+      filter: none;
     }
 
     .towerIcon {
@@ -199,7 +221,7 @@
       height: 34px;
       border-radius: 50%;
       position: relative;
-      box-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 10px 18px rgba(97, 72, 47, 0.18);
     }
 
     .towerIcon::before, .towerIcon::after {
@@ -214,60 +236,61 @@
       font-weight: 800;
       text-align: center;
       line-height: 1.05;
+      color: #403125;
     }
 
     .towerCost {
       font-size: 11px;
-      color: #f0c46b;
+      color: var(--gold-deep);
       font-weight: 800;
     }
 
-    .towerBtn[data-type="arrow"] .towerIcon { background: radial-gradient(circle at 30% 30%, #ffdf8e, #8b5d10 68%, #3a2502 100%); }
+    .towerBtn[data-type="arrow"] .towerIcon { background: radial-gradient(circle at 30% 30%, #f5e2a8, #c7943d 68%, #7c561f 100%); }
     .towerBtn[data-type="arrow"] .towerIcon::before {
       inset: 7px 11px 7px 11px;
       border-radius: 8px;
-      background: linear-gradient(180deg, #fff0b9, #d8a63a);
+      background: linear-gradient(180deg, #fff6d7, #ddb55b);
       transform: skewY(-18deg);
     }
 
-    .towerBtn[data-type="cannon"] .towerIcon { background: radial-gradient(circle at 35% 35%, #f3d2a0, #7a4a15 66%, #2f1a03 100%); }
+    .towerBtn[data-type="cannon"] .towerIcon { background: radial-gradient(circle at 35% 35%, #ead3b1, #b77f42 66%, #71502e 100%); }
     .towerBtn[data-type="cannon"] .towerIcon::before {
       inset: 9px 7px 9px 7px;
       border-radius: 14px;
-      background: linear-gradient(180deg, #d4c6a3, #796241);
-      box-shadow: inset 0 0 0 3px rgba(0,0,0,0.22);
+      background: linear-gradient(180deg, #f0dfc9, #9a7a55);
+      box-shadow: inset 0 0 0 3px rgba(0,0,0,0.12);
     }
 
-    .towerBtn[data-type="ice"] .towerIcon { background: radial-gradient(circle at 35% 35%, #cfefff, #2f6d92 66%, #0d1a24 100%); }
+    .towerBtn[data-type="ice"] .towerIcon { background: radial-gradient(circle at 35% 35%, #e6f7fb, #75a8bd 66%, #557082 100%); }
     .towerBtn[data-type="ice"] .towerIcon::before {
       inset: 8px;
-      background: conic-gradient(from 0deg, #ecfbff, #89dcff, #e6fbff, #89dcff, #ecfbff);
+      background: conic-gradient(from 0deg, #f8feff, #abd9e4, #eefbfe, #abd9e4, #f8feff);
       clip-path: polygon(50% 0%, 66% 22%, 94% 18%, 78% 50%, 94% 82%, 66% 78%, 50% 100%, 34% 78%, 6% 82%, 22% 50%, 6% 18%, 34% 22%);
     }
 
-    .towerBtn[data-type="lightning"] .towerIcon { background: radial-gradient(circle at 35% 35%, #ffe6a1, #5d55b3 66%, #190f39 100%); }
+    .towerBtn[data-type="lightning"] .towerIcon { background: radial-gradient(circle at 35% 35%, #f1e3b4, #8f83cf 66%, #5d548b 100%); }
     .towerBtn[data-type="lightning"] .towerIcon::before {
       inset: 7px 12px 7px 12px;
-      background: linear-gradient(180deg, #fff5a9, #cabdff);
+      background: linear-gradient(180deg, #fff8c8, #d6ccff);
       clip-path: polygon(42% 0%, 67% 0%, 49% 36%, 74% 36%, 26% 100%, 39% 58%, 18% 58%);
-      filter: drop-shadow(0 0 4px rgba(248, 235, 132, 0.45));
+      filter: drop-shadow(0 0 4px rgba(208, 190, 255, 0.45));
     }
 
-    .towerBtn[data-type="fire"] .towerIcon { background: radial-gradient(circle at 35% 35%, #ffd88a, #a43b16 66%, #2a0a05 100%); }
+    .towerBtn[data-type="fire"] .towerIcon { background: radial-gradient(circle at 35% 35%, #ffdba8, #cf6e35 66%, #8b4b25 100%); }
     .towerBtn[data-type="fire"] .towerIcon::before {
       inset: 7px 9px 7px 9px;
-      background: radial-gradient(circle at 50% 30%, #fff0c1, #ff9e4c 45%, #d63a12 80%);
+      background: radial-gradient(circle at 50% 30%, #fff4d4, #ffb06b 45%, #d96834 80%);
       border-radius: 45% 45% 55% 55% / 40% 40% 60% 60%;
       transform: rotate(-8deg);
     }
 
-    .towerBtn[data-type="mage"] .towerIcon { background: radial-gradient(circle at 35% 35%, #f4b9ff, #5a2e80 66%, #19081f 100%); }
+    .towerBtn[data-type="mage"] .towerIcon { background: radial-gradient(circle at 35% 35%, #efdaf8, #8663b3 66%, #5c456f 100%); }
     .towerBtn[data-type="mage"] .towerIcon::before {
       inset: 6px;
       background:
-        radial-gradient(circle at 50% 38%, #ffeefb 0 18%, transparent 19%),
-        radial-gradient(circle at 50% 74%, #5bd0b8 0 10%, transparent 11%),
-        linear-gradient(180deg, #f3d4ff, #8d4ac3);
+        radial-gradient(circle at 50% 38%, #fff7fd 0 18%, transparent 19%),
+        radial-gradient(circle at 50% 74%, #7fcbbf 0 10%, transparent 11%),
+        linear-gradient(180deg, #f5e7ff, #9f74cf);
       clip-path: polygon(50% 0%, 81% 24%, 68% 100%, 32% 100%, 19% 24%);
     }
 
@@ -276,13 +299,13 @@
       right: 16px;
       bottom: 16px;
       width: min(320px, calc(100% - 32px));
-      border-radius: 20px;
-      background: rgba(8, 13, 18, 0.76);
-      border: 1px solid rgba(255, 214, 128, 0.18);
+      border-radius: 24px;
+      background: rgba(255, 252, 247, 0.92);
+      border: 1px solid rgba(212, 165, 116, 0.2);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      padding: 14px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      padding: 16px;
       display: none;
       z-index: 5;
     }
@@ -292,7 +315,7 @@
     #towerInspector h2 {
       margin: 0;
       font-size: 18px;
-      color: #fff3d0;
+      color: #34261c;
     }
 
     #towerInspector .meta {
@@ -312,8 +335,9 @@
     #towerInspector .grid div {
       padding: 8px 10px;
       border-radius: 12px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(212, 165, 116, 0.12);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
     #towerInspector .actions {
@@ -326,18 +350,20 @@
     .actionBtn {
       appearance: none;
       border: 0;
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 10px 12px;
       font: inherit;
       font-weight: 800;
-      color: #1b1305;
-      background: linear-gradient(180deg, #f3d38b, #b87f1c);
+      color: #2b1d10;
+      background: linear-gradient(180deg, #f7dfb2, #d4a574);
+      box-shadow: 0 8px 18px rgba(164, 120, 69, 0.18);
     }
 
     .actionBtn.secondary {
-      color: #f5f1e6;
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-      border: 1px solid rgba(255,255,255,0.08);
+      color: #4a3726;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(245, 236, 224, 0.95));
+      border: 1px solid rgba(212, 165, 116, 0.16);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
     }
 
     #overlay {
@@ -346,7 +372,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at center, rgba(4, 9, 13, 0.28), rgba(4, 9, 13, 0.72));
+      background: radial-gradient(circle at center, rgba(250, 248, 245, 0.2), rgba(94, 72, 46, 0.32));
       opacity: 0;
       pointer-events: none;
       transition: opacity 180ms ease;
@@ -360,17 +386,17 @@
 
     .overlayCard {
       width: min(92%, 360px);
-      border-radius: 24px;
+      border-radius: 28px;
       padding: 20px;
-      background: rgba(12, 18, 24, 0.92);
-      border: 1px solid rgba(255, 214, 128, 0.18);
+      background: rgba(255, 252, 247, 0.96);
+      border: 1px solid rgba(212, 165, 116, 0.22);
       box-shadow: var(--shadow);
       text-align: center;
     }
 
     .overlayCard h2 {
       margin: 0 0 6px;
-      color: #fff0c6;
+      color: #34261c;
       font-size: 28px;
     }
 
@@ -385,20 +411,21 @@
       width: 100%;
       appearance: none;
       border: 0;
-      border-radius: 14px;
+      border-radius: 16px;
       padding: 13px 14px;
       font: inherit;
       font-weight: 900;
-      color: #1c1202;
-      background: linear-gradient(180deg, #ffe19d, #c58b22);
+      color: #2a1b0e;
+      background: linear-gradient(180deg, #f7dfb2, #d4a574);
+      box-shadow: 0 10px 22px rgba(164, 120, 69, 0.22);
     }
 
     @media (max-width: 900px) {
       #app { padding: 8px; gap: 8px; }
-      #topBar { padding: 14px; border-radius: 20px; }
-      #towerBar { gap: 8px; padding: 8px; border-radius: 20px; }
-      .stat { min-width: 62px; padding: 8px 10px; border-radius: 14px; }
-      .towerBtn { border-radius: 14px; padding: 8px 4px; }
+      #topBar { padding: 14px; border-radius: 24px; }
+      #towerBar { gap: 8px; padding: 8px; border-radius: 24px; grid-template-columns: repeat(3, minmax(0, 1fr)); min-height: 180px; }
+      .stat { min-width: 62px; padding: 8px 10px; border-radius: 16px; }
+      .towerBtn { border-radius: 18px; padding: 8px 4px; }
       .towerIcon { width: 30px; height: 30px; }
       .towerLabel { font-size: 10px; }
       .towerCost { font-size: 10px; }
@@ -410,6 +437,7 @@
       .stat small { font-size: 9px; }
       .stat span { font-size: 16px; }
       .titleBlock h1 { font-size: 19px; }
+      #towerBar { grid-template-columns: repeat(2, minmax(0, 1fr)); min-height: 236px; }
       #towerInspector { right: 10px; bottom: 10px; width: calc(100% - 20px); }
     }
   </style>
@@ -517,7 +545,7 @@
           fireRate: 1.55,
           damage: 12,
           projectileSpeed: 10.5,
-          color: '#f1cc73'
+          color: '#f0ddaa'
         },
         cannon: {
           name: 'Cannon Tower',
@@ -527,7 +555,7 @@
           damage: 24,
           splash: 1.25,
           projectileSpeed: 7.3,
-          color: '#d9a262'
+          color: '#d5b48e'
         },
         ice: {
           name: 'Ice Tower',
@@ -538,7 +566,7 @@
           slowFactor: 0.52,
           slowDuration: 2.9,
           projectileSpeed: 8.5,
-          color: '#8ee3ff'
+          color: '#8fcfdf'
         },
         lightning: {
           name: 'Lightning Tower',
@@ -548,7 +576,7 @@
           damage: 18,
           chainCount: 3,
           chainFalloff: 0.7,
-          color: '#cbb4ff'
+          color: '#c9b6eb'
         },
         fire: {
           name: 'Fire Dragon Tower',
@@ -560,7 +588,7 @@
           burnDuration: 3.2,
           projectileSpeed: 8.8,
           splash: 0.9,
-          color: '#ff9960'
+          color: '#e38a57'
         },
         mage: {
           name: 'Dark Mage Tower',
@@ -571,16 +599,16 @@
           slowFactor: 0.72,
           slowDuration: 1.8,
           projectileSpeed: 9.2,
-          color: '#ae8cff'
+          color: '#aa8bc7'
         }
       };
 
       const enemyDefs = [
-        { name: 'Imp', hp: 32, speed: 1.0, reward: 8, color: '#c98b72', radius: 0.28 },
-        { name: 'Ghoul', hp: 52, speed: 0.9, reward: 11, color: '#87be7d', radius: 0.31 },
-        { name: 'Brute', hp: 92, speed: 0.72, reward: 16, color: '#b77b53', radius: 0.36 },
-        { name: 'Wraith', hp: 72, speed: 1.25, reward: 15, color: '#9ab7ff', radius: 0.29 },
-        { name: 'Ogre', hp: 165, speed: 0.56, reward: 24, color: '#8a6544', radius: 0.41 }
+        { name: 'Imp', hp: 32, speed: 1.0, reward: 8, color: '#c39076', radius: 0.28 },
+        { name: 'Ghoul', hp: 52, speed: 0.9, reward: 11, color: '#9dad8d', radius: 0.31 },
+        { name: 'Brute', hp: 92, speed: 0.72, reward: 16, color: '#b18a67', radius: 0.36 },
+        { name: 'Wraith', hp: 72, speed: 1.25, reward: 15, color: '#9ba8cc', radius: 0.29 },
+        { name: 'Ogre', hp: 165, speed: 0.56, reward: 24, color: '#9b775b', radius: 0.41 }
       ];
 
       const state = {
@@ -668,12 +696,12 @@
 
       function towerColor(type, level) {
         const palette = {
-          arrow: ['#f5d783', '#d6a441', '#8c5a15', '#fff1be'],
-          cannon: ['#d8ae71', '#9b6d32', '#603812', '#f0d3a2'],
-          ice: ['#c9f5ff', '#6bbcdc', '#2f7797', '#f2feff'],
-          lightning: ['#e2d2ff', '#8e79da', '#4a3f92', '#fff4b0'],
-          fire: ['#ffd38f', '#ff8c49', '#a53a13', '#fff0c4'],
-          mage: ['#e3c9ff', '#9962e6', '#4f287a', '#d4fff8']
+          arrow: ['#f0ddaa', '#d0a24b', '#8b5b19', '#fff6d9'],
+          cannon: ['#d5c1a1', '#ae8650', '#6a4a2b', '#f6ead6'],
+          ice: ['#dff6fb', '#77b4c7', '#47768a', '#f6fcfd'],
+          lightning: ['#eadff8', '#a58adf', '#63509d', '#fff2c9'],
+          fire: ['#f8d6a4', '#e08a4c', '#a94d25', '#fff0d9'],
+          mage: ['#e9d8f2', '#9d7cc6', '#5f4a80', '#edf7f3']
         };
         return palette[type][Math.min(level - 1, 3)];
       }
