@@ -161,7 +161,10 @@
       height: 100%;
       display: block;
       touch-action: none;
-      background: linear-gradient(180deg, #fcf9f5, #f1e6d8);
+      background:
+        radial-gradient(circle at 20% 18%, rgba(212, 165, 116, 0.10), transparent 28%),
+        radial-gradient(circle at 80% 24%, rgba(179, 150, 118, 0.08), transparent 30%),
+        linear-gradient(180deg, #faf8f5, #f3e8db);
     }
 
     #towerBar {
@@ -1376,19 +1379,20 @@
       }
 
       function drawBackground() {
-        ctx.fillStyle = '#081019';
+        ctx.fillStyle = '#faf8f5';
         ctx.fillRect(0, 0, boardW, boardH);
-        const grad = ctx.createRadialGradient(boardW * 0.5, boardH * 0.42, 20, boardW * 0.5, boardH * 0.48, Math.max(boardW, boardH) * 0.72);
-        grad.addColorStop(0, 'rgba(23, 35, 49, 0.84)');
-        grad.addColorStop(1, 'rgba(4, 8, 11, 1)');
+        const grad = ctx.createRadialGradient(boardW * 0.5, boardH * 0.42, 20, boardW * 0.5, boardH * 0.48, Math.max(boardW, boardH) * 0.78);
+        grad.addColorStop(0, 'rgba(255, 251, 244, 0.98)');
+        grad.addColorStop(0.65, 'rgba(246, 235, 221, 0.96)');
+        grad.addColorStop(1, 'rgba(235, 221, 203, 0.98)');
         ctx.fillStyle = grad;
         ctx.fillRect(0, 0, boardW, boardH);
 
         ctx.save();
-        ctx.globalAlpha = 0.14;
-        for (let i = 0; i < 26; i++) {
+        ctx.globalAlpha = 0.07;
+        for (let i = 0; i < 24; i++) {
           const x = (i * 137 + (state.time * 12)) % boardW;
-          ctx.fillStyle = i % 2 ? '#2f4f3b' : '#6c5432';
+          ctx.fillStyle = i % 2 ? '#d8c1a1' : '#c6ab85';
           ctx.fillRect(x, 0, 2, boardH);
         }
         ctx.restore();
@@ -1410,11 +1414,11 @@
             const x = c * cell;
             const y = r * cell;
             const road = isPathCell(c, r);
-            const base = road ? '#3a3230' : (r % 2 === 0 ? '#27412e' : '#22382a');
+            const base = road ? '#d8c0a1' : (r % 2 === 0 ? '#f7f0e6' : '#f3e7d8');
             ctx.fillStyle = base;
             ctx.fillRect(x, y, cell, cell);
             if (!road) {
-              ctx.fillStyle = `rgba(255,255,255,${0.02 + ((c + r) % 3) * 0.008})`;
+              ctx.fillStyle = `rgba(255,255,255,${0.08 + ((c + r) % 3) * 0.02})`;
               ctx.fillRect(x + 1, y + 1, cell - 2, cell - 2);
             }
           }
@@ -1431,17 +1435,17 @@
           const vertical = neighbors.some(([nc, nr]) => nc === c);
           ctx.save();
           ctx.translate(x + cell / 2, y + cell / 2);
-          ctx.fillStyle = '#5a4936';
+          ctx.fillStyle = '#b48d60';
           ctx.beginPath();
           ctx.roundRect(-cell * 0.48, -cell * 0.48, cell * 0.96, cell * 0.96, cell * 0.18);
           ctx.fill();
-          ctx.fillStyle = '#6e5a41';
+          ctx.fillStyle = '#caa57a';
           ctx.globalAlpha = 0.82;
           ctx.beginPath();
           ctx.roundRect(-cell * 0.35, -cell * 0.35, cell * 0.7, cell * 0.7, cell * 0.14);
           ctx.fill();
           ctx.globalAlpha = 0.35;
-          ctx.strokeStyle = '#d9c59a';
+          ctx.strokeStyle = '#f6ead8';
           ctx.lineWidth = Math.max(1, cell * 0.06);
           ctx.beginPath();
           if (horizontal) {
@@ -1456,7 +1460,7 @@
           ctx.restore();
         }
 
-        ctx.strokeStyle = 'rgba(255, 214, 128, 0.07)';
+        ctx.strokeStyle = 'rgba(160, 126, 87, 0.10)';
         ctx.lineWidth = 1;
         for (let c = 0; c <= g.cols; c++) {
           ctx.beginPath();
@@ -1494,11 +1498,11 @@
         ctx.arc(0, 0, state.grid.cell * (0.44 + pulse * 0.06), 0, Math.PI * 2);
         ctx.fill();
         ctx.globalAlpha = 1;
-        ctx.fillStyle = isStart ? '#1d6a7e' : '#814118';
+        ctx.fillStyle = isStart ? '#7d9e8f' : '#b07a4a';
         ctx.beginPath();
         ctx.roundRect(-state.grid.cell * 0.25, -state.grid.cell * 0.33, state.grid.cell * 0.5, state.grid.cell * 0.66, state.grid.cell * 0.12);
         ctx.fill();
-        ctx.fillStyle = 'rgba(255,255,255,0.2)';
+        ctx.fillStyle = 'rgba(255,255,255,0.26)';
         ctx.fillRect(-state.grid.cell * 0.14, -state.grid.cell * 0.18, state.grid.cell * 0.28, state.grid.cell * 0.36);
         ctx.restore();
       }
@@ -1517,15 +1521,15 @@
 
           ctx.globalAlpha = 0.22;
           const auraGrad = ctx.createRadialGradient(0, 0, size * 0.2, 0, 0, stats.range * state.grid.cell);
-          auraGrad.addColorStop(0, 'rgba(255,255,255,0.18)');
-          auraGrad.addColorStop(1, 'rgba(255,255,255,0)');
+          auraGrad.addColorStop(0, 'rgba(255,248,235,0.20)');
+          auraGrad.addColorStop(1, 'rgba(255,248,235,0)');
           ctx.fillStyle = auraGrad;
           ctx.beginPath();
           ctx.arc(0, 0, stats.range * state.grid.cell, 0, Math.PI * 2);
           ctx.fill();
 
           ctx.globalAlpha = 1;
-          ctx.fillStyle = 'rgba(0,0,0,0.25)';
+          ctx.fillStyle = 'rgba(145, 110, 74, 0.22)';
           ctx.beginPath();
           ctx.ellipse(4, 6, size * 0.9, size * 0.7, 0, 0, Math.PI * 2);
           ctx.fill();
@@ -1559,7 +1563,7 @@
         ctx.save();
         ctx.shadowBlur = 18;
         ctx.shadowColor = glow;
-        ctx.fillStyle = 'rgba(5, 8, 10, 0.7)';
+        ctx.fillStyle = 'rgba(160, 126, 87, 0.42)';
         ctx.beginPath();
         ctx.arc(0, 0, s * 0.62, 0, Math.PI * 2);
         ctx.fill();
@@ -1684,8 +1688,8 @@
           ctx.rotate(wobble);
 
           const shadow = ctx.createRadialGradient(0, radius * 0.1, radius * 0.1, 0, 0, radius * 1.2);
-          shadow.addColorStop(0, 'rgba(0,0,0,0.45)');
-          shadow.addColorStop(1, 'rgba(0,0,0,0)');
+          shadow.addColorStop(0, 'rgba(160, 126, 87, 0.28)');
+          shadow.addColorStop(1, 'rgba(160, 126, 87, 0)');
           ctx.fillStyle = shadow;
           ctx.beginPath();
           ctx.arc(0, radius * 0.32, radius * 1.1, 0, Math.PI * 2);
@@ -1881,7 +1885,7 @@
       function drawVignette() {
         const grad = ctx.createRadialGradient(boardW * 0.5, boardH * 0.45, boardW * 0.1, boardW * 0.5, boardH * 0.45, Math.max(boardW, boardH) * 0.75);
         grad.addColorStop(0, 'rgba(0,0,0,0)');
-        grad.addColorStop(1, 'rgba(0,0,0,0.45)');
+        grad.addColorStop(1, 'rgba(160, 126, 87, 0.16)');
         ctx.fillStyle = grad;
         ctx.fillRect(0, 0, boardW, boardH);
       }
